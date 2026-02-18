@@ -41,3 +41,14 @@
 /home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
 /home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/obj/Debug/net10.0/backend.sourcelink.json
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/DevOne.Security.Cryptography.BCrypt.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/FluentValidation.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/FluentValidation.DependencyInjectionExtensions.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/Microsoft.EntityFrameworkCore.Relational.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/Npgsql.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/home/cossi/Code/AI-Legal-Document-Summarizer/backend/backend/bin/Debug/net10.0/EFCore.NamingConventions.dll
