@@ -32,20 +32,24 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
+[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Layout/DashboardLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = TGF5b3V0L0Rhc2hib2FyZExheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSG9tZS5yYXpvcg==
+[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Dashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGFzaGJvYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/NotFound.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTm90Rm91bmQucmF6b3I=
+[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Weather.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2VhdGhlci5yYXpvcg==
+[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/RedirectToLogin.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVkaXJlY3RUb0xvZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Register.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/_Imports.razor]
