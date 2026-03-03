@@ -40,6 +40,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGFzaGJvYXJkLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Documents.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRG9jdW1lbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -50,6 +54,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Register.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVnaXN0ZXIucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/Pages/Summaries.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3VtbWFyaWVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/cossi/Code/AI-Legal-Document-Summarizer/frontend/frontend/_Imports.razor]

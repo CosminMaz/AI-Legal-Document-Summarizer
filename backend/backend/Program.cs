@@ -25,8 +25,10 @@ builder.Services.AddDbContext<BackendContext>(options =>
         .UseSnakeCaseNamingConvention());
 
 builder.Services.AddScoped<RegisterService>();
+builder.Services.AddScoped<LoginService>();
 
 builder.Services.AddValidatorsFromAssemblyContaining<RegisterUserValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<LoginUserValidator>();
 
 builder.Services.AddAuthentication();
 builder.Services.AddAuthorization();
@@ -52,5 +54,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRegister();
+app.MapLogin();
 
 app.Run();
