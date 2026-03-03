@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{400FB400-020E-448F-9B06-66A41F1DFF1D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{D01998A9-88D4-4B6E-9750-56A571BCAD45}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{322CABD4-7C21-417D-842C-283CC2A087AC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{78B5C094-D3A2-45CA-B655-D95F7CA16751}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{42156BB9-278C-4D3A-ADEB-3E7E684073AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cosmin.Domain", "Cosmin.Domain\Cosmin.Domain.csproj", "{A48C1D01-D8DE-4781-8F75-69FDB1F30874}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cosmin.Application", "Cosmin.Application\Cosmin.Application.csproj", "{362247DB-0B9F-411D-BD95-0167D081CF09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cosmin.Infrastructure", "Cosmin.Infrastructure\Cosmin.Infrastructure.csproj", "{F59D7D80-5D23-4690-B4D5-210339E16664}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cosmin.API", "Cosmin.API\Cosmin.API.csproj", "{138C93F0-8BDA-40C5-AD22-42CC1A5EAC39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A48C1D01-D8DE-4781-8F75-69FDB1F30874} = {400FB400-020E-448F-9B06-66A41F1DFF1D}
+		{362247DB-0B9F-411D-BD95-0167D081CF09} = {D01998A9-88D4-4B6E-9750-56A571BCAD45}
+		{F59D7D80-5D23-4690-B4D5-210339E16664} = {322CABD4-7C21-417D-842C-283CC2A087AC}
+		{138C93F0-8BDA-40C5-AD22-42CC1A5EAC39} = {78B5C094-D3A2-45CA-B655-D95F7CA16751}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A48C1D01-D8DE-4781-8F75-69FDB1F30874}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A48C1D01-D8DE-4781-8F75-69FDB1F30874}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A48C1D01-D8DE-4781-8F75-69FDB1F30874}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A48C1D01-D8DE-4781-8F75-69FDB1F30874}.Release|Any CPU.Build.0 = Release|Any CPU
+		{362247DB-0B9F-411D-BD95-0167D081CF09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{362247DB-0B9F-411D-BD95-0167D081CF09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{362247DB-0B9F-411D-BD95-0167D081CF09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{362247DB-0B9F-411D-BD95-0167D081CF09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F59D7D80-5D23-4690-B4D5-210339E16664}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F59D7D80-5D23-4690-B4D5-210339E16664}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F59D7D80-5D23-4690-B4D5-210339E16664}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F59D7D80-5D23-4690-B4D5-210339E16664}.Release|Any CPU.Build.0 = Release|Any CPU
+		{138C93F0-8BDA-40C5-AD22-42CC1A5EAC39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{138C93F0-8BDA-40C5-AD22-42CC1A5EAC39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{138C93F0-8BDA-40C5-AD22-42CC1A5EAC39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{138C93F0-8BDA-40C5-AD22-42CC1A5EAC39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
