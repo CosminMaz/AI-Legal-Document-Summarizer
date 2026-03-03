@@ -34,4 +34,19 @@ public class UsersController(IMediator mediator) : ControllerBase
             return BadRequest(new { message });
         }
     }
+
+    [HttpPost("login")]
+    [ProducesResponseType(typeof(LoginUserResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> LoginUser([FromBody] LoginUserCommand command, CancellationToken cancellationToken)
+    {
+        var response = await _mediator.Send(command, cancellationToken);
+
+        if (response is null)
+        {
+            return Unauthorized(new { message = "Invalid username/email or password." });
+        }
+
+        return Ok(response);
+    }
 }
