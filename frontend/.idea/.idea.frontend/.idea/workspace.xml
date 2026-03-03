@@ -9,53 +9,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49c4b12f-4b8b-4dd4-9726-7505485ad317" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/.idea/.idea.backend/.idea/dataSources/97484404-ac3c-4828-b350-eeb9d7945673.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/.idea/.idea.backend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/.idea/.idea.backend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../backend/backend.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/backend.sln" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/backend/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.frontend/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend.sln" beforeDir="false" afterPath="$PROJECT_DIR$/frontend.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/App.razor" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/App.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Layout/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Layout/MainLayout.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.frontend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.frontend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Layout/DashboardLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Layout/DashboardLayout.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/Layout/MainLayout.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Layout/MainLayout.razor.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/Layout/NavMenu.razor" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Layout/NavMenu.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/Layout/NavMenu.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Layout/NavMenu.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Pages/Counter.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Pages/Home.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Pages/NotFound.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Pages/Weather.razor" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/_Imports.razor" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/_Imports.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Pages/Dashboard.razor" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Pages/Dashboard.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Pages/Login.razor" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Pages/Login.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/Pages/Register.razor" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/Pages/Register.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/frontend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/frontend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/frontend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/frontend.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/frontend.staticwebassets.endpoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/frontend.staticwebassets.endpoints.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/frontend.staticwebassets.runtime.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/frontend.staticwebassets.runtime.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/wwwroot/_framework/dotnet.36lqj8uiep.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/wwwroot/_framework/dotnet.36lqj8uiep.js.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/wwwroot/_framework/frontend.5r1oy0hgkm.wasm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/wwwroot/_framework/frontend.5r1oy0hgkm.wasm.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/wwwroot/_framework/frontend.dj278j3wgt.pdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/bin/Debug/net10.0/wwwroot/_framework/frontend.dj278j3wgt.pdb.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/3cqiwibpsz-{0}-h3gxok0plj-h3gxok0plj.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/4oueu22sz7-{0}-yi2ps9pb0l-yi2ps9pb0l.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/7gk3eja6sl-{0}-aqr0ycpcyf-aqr0ycpcyf.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/9s57tg12yf-{0}-dj278j3wgt-dj278j3wgt.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/arklrgerwa-{0}-vw0piuei5c-vw0piuei5c.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/du5mjbtcew-{0}-350cl95ohi-350cl95ohi.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/ilsaxdzpf9-{0}-36lqj8uiep-36lqj8uiep.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/lispjtqes0-{0}-rzzsqav5hk-rzzsqav5hk.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/lokeby9v8x-{0}-5r1oy0hgkm-5r1oy0hgkm.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/mcblle5h7l-{0}-vnc9dmv67p-vnc9dmv67p.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/n08wk2n6o4-{0}-m3htd85f5j-m3htd85f5j.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/oobgovatst-{0}-jgjs74aw48-jgjs74aw48.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/pev48tlxa8-{0}-zljeuyej8o-zljeuyej8o.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/pil6dkrnej-{0}-jgjs74aw48-jgjs74aw48.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/t6imcke3a0-{0}-a7v4xqqbca-a7v4xqqbca.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/w7dkgwdo2r-{0}-6vhaw8rl9f-6vhaw8rl9f.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/compressed/ww6e6pfryo-{0}-3biml7om9f-3biml7om9f.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/dotnet.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/dotnet.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.csproj.FileListAbsolute.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/frontend.pdb" afterDir="false" />
@@ -76,33 +49,27 @@
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/staticwebassets.development.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/staticwebassets.development.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/staticwebassets/htmlassetplaceholders/build/t25fytr6a7.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/staticwebassets/htmlassetplaceholders/build/t25fytr6a7.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/webcil/frontend.wasm" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/Debug/net10.0/webcil/frontend.wasm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/frontend.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/frontend.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/wwwroot/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/css/app.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/wwwroot/sample-data/weather.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/wwwroot/sample-data/weather.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_/home/cossi/Code/AI-Legal-Document-Summarizer/frontend" value="39qS2IoVsn6vktTVjeR7d6sLifi" />
+    </persistenceIdMap>
+  </component>
   <component name="DpaMonitoringSettings">
     <option name="firstShow" value="false" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/frontend/Pages/Summaries.razor" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -123,7 +90,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;login&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/cossi/Code/AI-Legal-Document-Summarizer/backend&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -183,6 +150,9 @@
       <workItem from="1771430623871" duration="90000" />
       <workItem from="1771432611258" duration="711000" />
       <workItem from="1771483718849" duration="2550000" />
+      <workItem from="1771567417652" duration="1521000" />
+      <workItem from="1771990303947" duration="1365000" />
+      <workItem from="1771999257620" duration="1668000" />
     </task>
     <servers />
   </component>
@@ -210,5 +180,13 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="github-copilot-workspace">
+    <instructionFileLocations>
+      <option value=".github/instructions" />
+    </instructionFileLocations>
+    <promptFileLocations>
+      <option value=".github/prompts" />
+    </promptFileLocations>
   </component>
 </project>
