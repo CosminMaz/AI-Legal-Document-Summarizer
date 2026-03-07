@@ -1,0 +1,40 @@
+@inherits LayoutComponentBase
+
+<div class="auth-layout">
+    <div class="auth-background">
+        <main>
+            @Body
+        </main>
+    </div>
+</div>
+
+<style>
+    .auth-layout {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+    }
+
+    .auth-background {
+        width: 100%;
+    }
+
+    .auth-layout main {
+        animation: fadeInUp 0.5s ease;
+    }
+
+    @@keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
