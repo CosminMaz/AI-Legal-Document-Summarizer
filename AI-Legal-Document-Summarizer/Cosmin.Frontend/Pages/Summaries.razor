@@ -1,0 +1,66 @@
+@page "/summaries"
+@layout Layout.MainLayout
+
+<PageTitle>Summaries - AI Legal Document Summarizer</PageTitle>
+
+<div class="summaries-container">
+    <div class="page-header" style="margin-bottom: 2rem;">
+        <h1 style="color: var(--primary-color); margin-bottom: 0.5rem;">✨ Document Summaries</h1>
+        <p class="text-muted" style="font-size: 1.1rem;">View and manage AI-generated summaries of your legal documents</p>
+    </div>
+
+    <div class="filters-section" style="margin-bottom: 2rem;">
+        <div class="card" style="padding: 1.5rem;">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                <div class="form-group" style="flex: 1; min-width: 250px; margin: 0;">
+                    <label>Search Summaries</label>
+                    <input type="text" class="form-control" placeholder="Search by document name..." />
+                </div>
+                <div class="form-group" style="min-width: 200px; margin: 0;">
+                    <label>Filter by Date</label>
+                    <select class="form-control">
+                        <option>All Time</option>
+                        <option>Last 7 Days</option>
+                        <option>Last 30 Days</option>
+                        <option>Last 90 Days</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="summaries-header" style="margin-bottom: 1rem;">
+        <h3 style="color: var(--text-primary);">Your Summaries</h3>
+    </div>
+
+    <div class="summaries-list">
+        <div class="card" style="padding: 2rem; text-align: center;">
+            <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;">✨</div>
+            <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">No summaries yet</h3>
+            <p class="text-muted" style="margin-bottom: 2rem;">
+                Upload and process a document to see AI-generated summaries here
+            </p>
+            <a href="/documents" class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem; text-decoration: none;">
+                Go to Documents
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    .summaries-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .summaries-list .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+        transition: all 0.2s ease;
+    }
+
+    select.form-control {
+        cursor: pointer;
+    }
+</style>
+
