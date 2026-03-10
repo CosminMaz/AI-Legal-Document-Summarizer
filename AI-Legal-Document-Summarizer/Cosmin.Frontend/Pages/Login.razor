@@ -1,0 +1,104 @@
+@page "/login"
+@layout Layout.DashboardLayout
+@inject NavigationManager NavigationManager
+@inject HttpClient Http
+@inject AuthService AuthService
+@using System.Net.Http.Json
+@using Cosmin.Frontend.Services
+
+<PageTitle>Login - AI Legal Document Summarizer</PageTitle>
+
+<div class="auth-container">
+    <div class="auth-card card">
+        <div class="auth-header text-center mb-4">
+            <h2 style="color: var(--primary-color); margin-bottom: 0.5rem;">⚖️ Welcome Back</h2>
+            <p class="text-muted">Sign in to your account to continue</p>
+        </div>
+
+        <EditForm Model="@loginModel" OnValidSubmit="@HandleLogin">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div class="form-group">
+                <label for="username">Username or Email</label>
+                <InputText id="username" @bind-Value="loginModel.UsernameOrEmail" class="form-control" placeholder="Enter your username or email" />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <InputText id="password" @bind-Value="loginModel.Password" type="password" class="form-control" placeholder="Enter your password" />
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem; margin-top: 1rem;">
+                Sign In
+            </button>
+        </EditForm>
+
+        <div class="auth-footer text-center mt-4">
+            <p class="text-muted" style="margin: 0;">
+                Don't have an account? <a href="/register" style="font-weight: 600;">Create one now</a>
+            </p>
+        </div>
+
+        @if (!string.IsNullOrEmpty(_message))
+        {
+            <div class="alert alert-danger mt-3">@_message</div>
+        }
+    </div>
+</div>
+
+<style>
+    .auth-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 4rem);
+        padding: 2rem;
+    }
+
+    .auth-card {
+        max-width: 450px;
+        width: 100%;
+    }
+
+    .auth-header h2 {
+        font-size: 2rem;
+        font-weight: 700;
+    }
+</style>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+    private string? _message;
+
+    private async Task HandleLogin()
+    {
+        try
+        {
+            var response = await Http.PostAsJsonAsync("/api/v1/users/login", loginModel);
+            if (response.IsSuccessStatusCode)
+            {
+                AuthService.Login();
+                NavigationManager.NavigateTo("/dashboard");
+            }
+            else
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _message = $"Login failed: {errorContent} (Status: {response.StatusCode})";
+            }
+        }
+        catch (Exception ex)
+        {
+            _message = $"An unexpected error occurred: {ex.Message}";
+        }
+    }
+
+    public class LoginModel
+    {
+        [System.ComponentModel.DataAnnotations.Required]
+        public string UsernameOrEmail { get; set; }
+
+        [System.ComponentModel.DataAnnotations.Required]
+        public string Password { get; set; }
+    }
+}
