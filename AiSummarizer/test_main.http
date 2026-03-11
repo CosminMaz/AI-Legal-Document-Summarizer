@@ -1,0 +1,44 @@
+# Test your FastAPI endpoints
+
+GET http://127.0.0.1:8000/
+Accept: application/json
+
+###
+
+GET http://127.0.0.1:8000/health
+Accept: application/json
+
+###
+
+POST http://127.0.0.1:8000/summarize
+Content-Type: application/json
+Accept: application/json
+
+{
+  "document_title": "Service Agreement",
+  "document_text": "This Service Agreement is made between Alpha Corp and Beta LLC on January 12, 2026. Beta LLC will provide software support services for twelve months. Alpha Corp must pay $4,000 per month within 15 days of invoice receipt. Either party may terminate the agreement with 30 days written notice. Beta LLC must keep all customer information confidential.",
+  "max_summary_words": 120
+}
+
+###
+
+POST http://127.0.0.1:8000/summarize
+Content-Type: multipart/form-data; boundary=LegalBoundary
+Accept: application/json
+
+--LegalBoundary
+Content-Disposition: form-data; name="document_title"
+
+Uploaded Contract
+--LegalBoundary
+Content-Disposition: form-data; name="max_summary_words"
+
+120
+--LegalBoundary
+Content-Disposition: form-data; name="file"; filename="sample.txt"
+Content-Type: text/plain
+
+This Non-Disclosure Agreement is entered into by Acme Corp and Jane Doe. Jane Doe must keep all confidential information private for three years and may use it only for evaluating the business relationship.
+--LegalBoundary--
+
+###

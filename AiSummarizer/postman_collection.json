@@ -1,0 +1,408 @@
+{
+  "info": {
+    "name": "AI Legal Document Summarizer",
+    "description": "Collection for testing the AI Legal Document Summarizer API. Supports plain text (JSON) and file uploads (PDF, DOCX, TXT, MD, RTF).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Root",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Returns a message confirming the API is running."
+          }
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "url": {
+              "raw": "{{base_url}}/health",
+              "host": ["{{base_url}}"],
+              "path": ["health"]
+            },
+            "description": "Returns { \"status\": \"ok\" } when the server is healthy."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Summarize – JSON text",
+      "item": [
+        {
+          "name": "Summarize plain text (full options)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept",       "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"document_title\": \"Service Agreement\",\n  \"document_text\": \"This Service Agreement is made between Alpha Corp and Beta LLC on January 12, 2026. Beta LLC will provide software support services for twelve months. Alpha Corp must pay $4,000 per month within 15 days of invoice receipt. Either party may terminate the agreement with 30 days written notice. Beta LLC must keep all customer information confidential.\",\n  \"max_summary_words\": 120\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Summarize a legal document supplied as plain text. All three fields are provided."
+          }
+        },
+        {
+          "name": "Summarize plain text (no title)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept",       "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"document_text\": \"Employer hires Employee for a one-year term beginning March 1, 2026. Employee will receive a salary of $80,000 and must comply with confidentiality and non-compete clauses.\",\n  \"max_summary_words\": 100\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Summarize without providing a document title. The API will use 'Untitled legal document'."
+          }
+        },
+        {
+          "name": "Summarize plain text (default word count)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept",       "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"document_title\": \"Non-Disclosure Agreement\",\n  \"document_text\": \"Acme Corp and Jane Doe enter this Non-Disclosure Agreement on March 10, 2026. Jane Doe agrees to keep all confidential information private for three years and may use it only for evaluating the potential business relationship between the parties.\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Omit max_summary_words to use the default of 200 words."
+          }
+        },
+        {
+          "name": "Error – empty document text",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept",       "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"document_title\": \"Empty Test\",\n  \"document_text\": \"   \",\n  \"max_summary_words\": 100\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Expects HTTP 400 – document_text must not be empty."
+          }
+        },
+        {
+          "name": "Error – missing document text",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept",       "value": "application/json" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"document_title\": \"Missing field test\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Expects HTTP 422 – document_text is required."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Summarize – File upload",
+      "item": [
+        {
+          "name": "Upload TXT file",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select a .txt file from your computer"
+                },
+                {
+                  "key": "document_title",
+                  "value": "My TXT Contract",
+                  "type": "text"
+                },
+                {
+                  "key": "max_summary_words",
+                  "value": "120",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Upload a plain text (.txt) legal document for summarization."
+          }
+        },
+        {
+          "name": "Upload PDF file",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select a .pdf file from your computer"
+                },
+                {
+                  "key": "document_title",
+                  "value": "My PDF Contract",
+                  "type": "text"
+                },
+                {
+                  "key": "max_summary_words",
+                  "value": "150",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Upload a PDF legal document for summarization."
+          }
+        },
+        {
+          "name": "Upload DOCX file",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select a .docx file from your computer"
+                },
+                {
+                  "key": "document_title",
+                  "value": "My Word Contract",
+                  "type": "text"
+                },
+                {
+                  "key": "max_summary_words",
+                  "value": "150",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Upload a Word (.docx) legal document for summarization."
+          }
+        },
+        {
+          "name": "Upload MD file",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select a .md file from your computer"
+                },
+                {
+                  "key": "document_title",
+                  "value": "My Markdown Contract",
+                  "type": "text"
+                },
+                {
+                  "key": "max_summary_words",
+                  "value": "120",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Upload a Markdown (.md) legal document for summarization."
+          }
+        },
+        {
+          "name": "Upload RTF file",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select a .rtf file from your computer"
+                },
+                {
+                  "key": "document_title",
+                  "value": "My RTF Contract",
+                  "type": "text"
+                },
+                {
+                  "key": "max_summary_words",
+                  "value": "120",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Upload a Rich Text Format (.rtf) legal document for summarization."
+          }
+        },
+        {
+          "name": "Error – unsupported file type",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "src": [],
+                  "description": "Select any unsupported file e.g. .zip or .doc"
+                },
+                {
+                  "key": "max_summary_words",
+                  "value": "120",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Expects HTTP 415 – unsupported file type. Upload a .zip, .doc, or any other unsupported format."
+          }
+        },
+        {
+          "name": "Error – no file field",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Accept", "value": "application/json" }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "document_title",
+                  "value": "Missing file test",
+                  "type": "text"
+                },
+                {
+                  "key": "max_summary_words",
+                  "value": "120",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/summarize",
+              "host": ["{{base_url}}"],
+              "path": ["summarize"]
+            },
+            "description": "Expects HTTP 400 – multipart request sent without a file field."
+          }
+        }
+      ]
+    }
+  ]
+}
+

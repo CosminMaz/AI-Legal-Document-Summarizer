@@ -1,9 +1,0 @@
-MASTER SERVICE AGREEMENT
-
-This Master Service Agreement ("Agreement") is entered between Client and Vendor. Vendor shall provide software services as described in the Statement of Work. Payment terms: Client will pay all invoices within 30 days.
-
-Confidential information exchanged under this Agreement must be protected and not disclosed to third parties. Vendor may terminate this Agreement at any time with written notice. This Agreement shall automatically renew for successive one-year terms unless either party provides notice at least 30 days before renewal.
-
-Vendor agrees to indemnify and hold harmless Client against any and all claims, damages, and liabilities arising from performance under this Agreement. Vendor liability shall not be limited for any breach of this Agreement.
-
-Disputes shall be settled by arbitration. Governing law is the law of England and Wales.
