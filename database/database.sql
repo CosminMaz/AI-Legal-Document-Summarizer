@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS document_summaries;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -11,4 +12,13 @@ CREATE TABLE users (
 
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE document_summaries (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    document_title TEXT,
+    summary TEXT NOT NULL,
+    model TEXT NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );

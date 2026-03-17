@@ -2,7 +2,7 @@ services:
   postgres-db:
     image: postgres:18
     container_name: dotnet_project
-    restart: always
+    restart: "no"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -10,7 +10,9 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - pgroot:/var/lib/postgresql
+      - ai_legal_pgroot:/var/lib/postgresql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql:ro
 
 volumes:
-  pgroot:
+  ai_legal_pgroot:
+    name: ai_legal_pgroot

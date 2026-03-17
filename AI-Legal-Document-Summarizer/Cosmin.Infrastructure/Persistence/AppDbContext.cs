@@ -11,9 +11,23 @@ public class AppDbContext : DbContext
     }
 
     public DbSet<User> Users => Set<User>();
+    public DbSet<SavedSummary> DocumentSummaries => Set<SavedSummary>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<SavedSummary>(e =>
+        {
+            e.ToTable("document_summaries");
+            e.HasKey(s => s.Id);
+            e.Property(s => s.Id).HasColumnName("id");
+            e.Property(s => s.UserId).HasColumnName("user_id").IsRequired();
+            e.Property(s => s.DocumentTitle).HasColumnName("document_title");
+            e.Property(s => s.Summary).HasColumnName("summary").IsRequired();
+            e.Property(s => s.Model).HasColumnName("model").IsRequired();
+            e.Property(s => s.CreatedAt).HasColumnName("created_at").IsRequired();
+            e.HasOne<User>().WithMany().HasForeignKey(s => s.UserId).OnDelete(DeleteBehavior.Cascade);
+        });
+
         modelBuilder.Entity<User>(e =>
         {
             e.ToTable("users");

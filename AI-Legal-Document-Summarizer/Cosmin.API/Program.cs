@@ -1,6 +1,7 @@
 using Cosmin.Application.Abstractions;
 using Cosmin.Infrastructure.Persistence;
 using Cosmin.Infrastructure.Repositories;
+using Cosmin.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,6 +32,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Add Repositories
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IDocumentSummaryRepository, DocumentSummaryRepository>();
+
+// Add HttpClient for Python AI Summarizer
+builder.Services.AddHttpClient("AiSummarizer", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["AiSummarizer:BaseUrl"]!);
+    client.Timeout = TimeSpan.FromSeconds(60);
+});
+
+// Add AI Summarizer service
+builder.Services.AddScoped<IAiSummarizerService, AiSummarizerService>();
 
 var app = builder.Build();
 

@@ -78,7 +78,8 @@
             var response = await Http.PostAsJsonAsync("/api/v1/users/login", loginModel);
             if (response.IsSuccessStatusCode)
             {
-                AuthService.Login();
+                var loginResponse = await response.Content.ReadFromJsonAsync<LoginResponse>();
+                AuthService.Login(loginResponse!.Id, loginResponse.Username);
                 NavigationManager.NavigateTo("/dashboard");
             }
             else
@@ -101,4 +102,6 @@
         [System.ComponentModel.DataAnnotations.Required]
         public string Password { get; set; }
     }
+
+    private sealed record LoginResponse(Guid Id, string Username, string Email, string Role);
 }

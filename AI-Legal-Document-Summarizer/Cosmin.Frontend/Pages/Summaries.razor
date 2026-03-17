@@ -1,41 +1,31 @@
 @page "/summaries"
 @layout Layout.MainLayout
+@inject HttpClient Http
+@inject Cosmin.Frontend.Services.AuthService AuthService
+@using System.Net.Http.Json
 
 <PageTitle>Summaries - AI Legal Document Summarizer</PageTitle>
 
 <div class="summaries-container">
     <div class="page-header" style="margin-bottom: 2rem;">
-        <h1 style="color: var(--primary-color); margin-bottom: 0.5rem;">✨ Document Summaries</h1>
-        <p class="text-muted" style="font-size: 1.1rem;">View and manage AI-generated summaries of your legal documents</p>
+        <h1 style="color: var(--primary-color); margin-bottom: 0.5rem;">Document Summaries</h1>
+        <p class="text-muted" style="font-size: 1.1rem;">AI-generated summaries of your legal documents</p>
     </div>
 
-    <div class="filters-section" style="margin-bottom: 2rem;">
-        <div class="card" style="padding: 1.5rem;">
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
-                <div class="form-group" style="flex: 1; min-width: 250px; margin: 0;">
-                    <label>Search Summaries</label>
-                    <input type="text" class="form-control" placeholder="Search by document name..." />
-                </div>
-                <div class="form-group" style="min-width: 200px; margin: 0;">
-                    <label>Filter by Date</label>
-                    <select class="form-control">
-                        <option>All Time</option>
-                        <option>Last 7 Days</option>
-                        <option>Last 30 Days</option>
-                        <option>Last 90 Days</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="summaries-header" style="margin-bottom: 1rem;">
-        <h3 style="color: var(--text-primary);">Your Summaries</h3>
-    </div>
-
-    <div class="summaries-list">
+    @if (_isLoading)
+    {
         <div class="card" style="padding: 2rem; text-align: center;">
-            <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;">✨</div>
+            <p class="text-muted">Loading summaries...</p>
+        </div>
+    }
+    else if (_errorMessage is not null)
+    {
+        <div class="alert alert-danger">@_errorMessage</div>
+    }
+    else if (_summaries.Count == 0)
+    {
+        <div class="card" style="padding: 2rem; text-align: center;">
+            <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;">📄</div>
             <h3 style="color: var(--primary-color); margin-bottom: 0.5rem;">No summaries yet</h3>
             <p class="text-muted" style="margin-bottom: 2rem;">
                 Upload and process a document to see AI-generated summaries here
@@ -44,23 +34,111 @@
                 Go to Documents
             </a>
         </div>
-    </div>
+    }
+    else
+    {
+        <div class="summaries-list">
+            @foreach (var s in _summaries)
+            {
+                <div class="card summary-card">
+                    <div class="summary-card-header">
+                        <div>
+                            <h4 class="summary-title">@(s.DocumentTitle ?? "Untitled Document")</h4>
+                            <span class="summary-date">@s.CreatedAt.ToLocalTime().ToString("MMM d, yyyy · h:mm tt")</span>
+                        </div>
+                        <span class="model-badge">@s.Model</span>
+                    </div>
+                    <div class="summary-body">@s.Summary</div>
+                </div>
+            }
+        </div>
+    }
 </div>
+
+@code {
+    private List<SummaryItem> _summaries = [];
+    private bool _isLoading = true;
+    private string? _errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!AuthService.IsLoggedIn || !AuthService.UserId.HasValue)
+        {
+            _isLoading = false;
+            return;
+        }
+
+        try
+        {
+            var result = await Http.GetFromJsonAsync<List<SummaryItem>>($"/api/v1/documents/summaries/{AuthService.UserId}");
+            _summaries = result ?? [];
+        }
+        catch (Exception ex)
+        {
+            _errorMessage = $"Could not load summaries: {ex.Message}";
+        }
+        finally
+        {
+            _isLoading = false;
+        }
+    }
+
+    private sealed record SummaryItem(Guid Id, string? DocumentTitle, string Summary, string Model, DateTime CreatedAt);
+}
 
 <style>
     .summaries-container {
-        max-width: 1200px;
+        max-width: 860px;
         margin: 0 auto;
     }
 
-    .summaries-list .card:hover {
+    .summaries-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .summary-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .summary-card:hover {
         transform: translateY(-2px);
         box-shadow: var(--shadow-lg);
-        transition: all 0.2s ease;
     }
 
-    select.form-control {
-        cursor: pointer;
+    .summary-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 0.75rem;
+    }
+
+    .summary-title {
+        color: var(--primary-color);
+        margin: 0 0 0.25rem;
+        font-size: 1.05rem;
+    }
+
+    .summary-date {
+        font-size: 0.8rem;
+        color: var(--text-muted, #6b7280);
+    }
+
+    .model-badge {
+        font-size: 0.75rem;
+        background: rgba(30, 64, 175, 0.1);
+        color: var(--primary-color);
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .summary-body {
+        line-height: 1.7;
+        color: var(--text-primary);
+        white-space: pre-wrap;
+        font-size: 0.95rem;
     }
 </style>
-

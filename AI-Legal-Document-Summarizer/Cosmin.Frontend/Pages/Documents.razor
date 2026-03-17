@@ -1,67 +1,317 @@
 @page "/documents"
 @layout Layout.MainLayout
+@inject HttpClient Http
+@inject Cosmin.Frontend.Services.AuthService AuthService
+@using System.Net.Http.Json
 
 <PageTitle>Documents - AI Legal Document Summarizer</PageTitle>
 
 <div class="documents-container">
-    <div class="page-header" style="margin-bottom: 2rem;">
-        <h1 style="color: var(--primary-color); margin-bottom: 0.5rem;">📄 My Documents</h1>
-        <p class="text-muted" style="font-size: 1.1rem;">Manage and upload your legal documents</p>
+    <div class="page-header">
+        <h1>My Documents</h1>
+        <p class="text-muted">Upload a legal document to receive an AI-generated summary</p>
     </div>
 
-    <div class="upload-section card" style="margin-bottom: 2rem; text-align: center; padding: 3rem;">
-        <div style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;">📁</div>
-        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Upload Your Documents</h3>
-        <p class="text-muted" style="margin-bottom: 2rem;">
-            Drag and drop files here or click to browse<br/>
-            Supported formats: PDF, DOCX, TXT
-        </p>
-        <button class="btn btn-primary" style="padding: 1rem 2rem; font-size: 1.1rem;">
-            Browse Files
+    <div class="card upload-card">
+        <h3>Upload Document</h3>
+
+        <div class="form-group">
+            <label>Document Title <span class="optional">(optional)</span></label>
+            <input class="form-control" @bind="documentTitle" placeholder="e.g. Service Agreement 2024" />
+        </div>
+
+        <div class="form-group">
+            <label>Max Summary Length</label>
+            <select class="form-control" @bind="maxSummaryWords">
+                <option value="100">Short (~100 words)</option>
+                <option value="200" selected>Medium (~200 words)</option>
+                <option value="400">Detailed (~400 words)</option>
+            </select>
+        </div>
+
+        <div class="drop-zone @(isDragging ? "dragging" : "")"
+             @ondragover:preventDefault
+             @ondragenter="() => isDragging = true"
+             @ondragleave="() => isDragging = false"
+             @ondrop="HandleDrop">
+            <div class="drop-zone-icon">📁</div>
+            @if (selectedFileName is not null)
+            {
+                <p class="file-selected">@selectedFileName</p>
+            }
+            else
+            {
+                <p>Drag &amp; drop a file here, or</p>
+            }
+            <label class="btn btn-secondary file-btn">
+                Browse Files
+                <InputFile OnChange="HandleFileSelected" accept=".pdf,.docx,.txt,.md,.rtf" style="display:none" />
+            </label>
+            <p class="text-muted formats-note">Supported: PDF, DOCX, TXT, MD, RTF &mdash; max 10 MB</p>
+        </div>
+
+        @if (errorMessage is not null)
+        {
+            <div class="alert alert-error">@errorMessage</div>
+        }
+
+        <button class="btn btn-primary submit-btn"
+                @onclick="SubmitDocument"
+                disabled="@(selectedFile is null || isLoading)">
+            @if (isLoading)
+            {
+                <span class="spinner"></span>
+                <span>Summarizing...</span>
+            }
+            else
+            {
+                <span>Summarize Document</span>
+            }
         </button>
     </div>
 
-    <div class="documents-header" style="margin-bottom: 1rem;">
-        <h3 style="color: var(--text-primary);">Recent Documents</h3>
-    </div>
-
-    <div class="documents-list">
-        <div class="card" style="padding: 1.5rem; margin-bottom: 1rem;">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div style="font-size: 2.5rem;">📄</div>
-                    <div>
-                        <h4 style="margin: 0; color: var(--primary-color);">No documents yet</h4>
-                        <p class="text-muted" style="margin: 0.25rem 0 0 0; font-size: 0.9rem;">
-                            Upload your first document to get started
-                        </p>
-                    </div>
-                </div>
+    @if (summary is not null)
+    {
+        <div class="card result-card">
+            <div class="result-header">
+                <h3>Summary</h3>
+                <span class="model-badge">@summary.Model</span>
             </div>
+            <div class="summary-text">@summary.Summary</div>
         </div>
-    </div>
+    }
 </div>
+
+@code {
+    private IBrowserFile? selectedFile;
+    private string? selectedFileName;
+    private string? documentTitle;
+    private int maxSummaryWords = 200;
+    private bool isLoading;
+    private bool isDragging;
+    private string? errorMessage;
+    private SummaryResult? summary;
+
+    private void HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+        selectedFileName = e.File.Name;
+        errorMessage = null;
+        summary = null;
+    }
+
+    private void HandleDrop(DragEventArgs e)
+    {
+        isDragging = false;
+        // Drag-and-drop for Blazor WASM requires InputFile; shown visually only
+    }
+
+    private async Task SubmitDocument()
+    {
+        if (selectedFile is null) return;
+
+        isLoading = true;
+        errorMessage = null;
+        summary = null;
+
+        try
+        {
+            using var content = new MultipartFormDataContent();
+
+            var stream = selectedFile.OpenReadStream(maxAllowedSize: 10 * 1024 * 1024);
+            var fileContent = new StreamContent(stream);
+            fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(selectedFile.ContentType);
+            content.Add(fileContent, "file", selectedFile.Name);
+
+            if (!string.IsNullOrWhiteSpace(documentTitle))
+                content.Add(new StringContent(documentTitle), "document_title");
+
+            content.Add(new StringContent(maxSummaryWords.ToString()), "max_summary_words");
+
+            if (AuthService.UserId.HasValue)
+                content.Add(new StringContent(AuthService.UserId.Value.ToString()), "userId");
+
+            var response = await Http.PostAsync("/api/v1/documents/summarize", content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                summary = await response.Content.ReadFromJsonAsync<SummaryResult>();
+            }
+            else
+            {
+                var error = await response.Content.ReadFromJsonAsync<ErrorResponse>();
+                errorMessage = error?.Message ?? $"Error {(int)response.StatusCode}: {response.ReasonPhrase}";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Could not reach the server: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private sealed record SummaryResult(string Summary, string Model);
+    private sealed record ErrorResponse(string Message);
+}
 
 <style>
     .documents-container {
-        max-width: 1000px;
+        max-width: 860px;
         margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
     }
 
-    .upload-section {
+    .page-header h1 {
+        color: var(--primary-color);
+        margin-bottom: 0.25rem;
+    }
+
+    .upload-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .upload-card h3 {
+        color: var(--primary-color);
+        margin: 0;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        font-size: 0.9rem;
+    }
+
+    .optional {
+        font-weight: 400;
+        color: var(--text-muted, #6b7280);
+    }
+
+    .form-control {
+        padding: 0.5rem 0.75rem;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        font-size: 0.95rem;
+        background: var(--bg-primary, #fff);
+        color: var(--text-primary);
+    }
+
+    .drop-zone {
         border: 2px dashed var(--border-color);
-        transition: all 0.3s ease;
+        border-radius: 10px;
+        padding: 2.5rem 1rem;
+        text-align: center;
+        transition: border-color 0.2s, background 0.2s;
+        cursor: default;
     }
 
-    .upload-section:hover {
+    .drop-zone.dragging {
         border-color: var(--primary-color);
-        background-color: rgba(30, 64, 175, 0.02);
+        background: rgba(30, 64, 175, 0.04);
     }
 
-    .documents-list .card:hover {
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-2px);
-        transition: all 0.2s ease;
+    .drop-zone-icon {
+        font-size: 3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .file-selected {
+        font-weight: 600;
+        color: var(--primary-color);
+        margin: 0.25rem 0 0.75rem;
+    }
+
+    .file-btn {
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .formats-note {
+        margin-top: 0.75rem;
+        font-size: 0.82rem;
+    }
+
+    .submit-btn {
+        align-self: flex-start;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+    }
+
+    .submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+
+    .spinner {
+        width: 16px;
+        height: 16px;
+        border: 2px solid rgba(255,255,255,0.4);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+        display: inline-block;
+    }
+
+    @@keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .alert-error {
+        background: #fef2f2;
+        border: 1px solid #fca5a5;
+        color: #991b1b;
+        padding: 0.75rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+    }
+
+    .result-card {
+        animation: fadeIn 0.3s ease;
+    }
+
+    .result-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .result-header h3 {
+        color: var(--primary-color);
+        margin: 0;
+    }
+
+    .model-badge {
+        font-size: 0.75rem;
+        background: rgba(30, 64, 175, 0.1);
+        color: var(--primary-color);
+        padding: 0.2rem 0.6rem;
+        border-radius: 999px;
+        font-weight: 600;
+    }
+
+    .summary-text {
+        line-height: 1.7;
+        color: var(--text-primary);
+        white-space: pre-wrap;
+    }
+
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
     }
 </style>
-
